@@ -281,12 +281,12 @@ local Combat = GuiLibrary.CreateWindow({
 	IconSize = 15
 })
 local Blatant = GuiLibrary.CreateWindow({
-	Name = "Blatant",
+	Name = "Main",
 	Icon = "vape/assets/BlatantIcon.png",
 	IconSize = 16
 })
 local Render = GuiLibrary.CreateWindow({
-	Name = "Render",
+	Name = "RenderV4",
 	Icon = "vape/assets/RenderIcon.png",
 	IconSize = 17
 })
@@ -323,13 +323,13 @@ GUI.CreateButton({
 	IconSize = 15
 })
 GUI.CreateButton({
-	Name = "Blatant",
+	Name = "Main",
 	Function = function(callback) Blatant.SetVisible(callback) end,
 	Icon = "vape/assets/BlatantIcon.png",
 	IconSize = 16
 })
 GUI.CreateButton({
-	Name = "Render",
+	Name = "RenderV4",
 	Function = function(callback) Render.SetVisible(callback) end,
 	Icon = "vape/assets/RenderIcon.png",
 	IconSize = 17
