@@ -107,7 +107,7 @@ local function displayErrorPopup(text, funclist)
 	local prompt = ErrorPrompt.new("Default")
 	prompt._hideErrorCode = true
 	local gui = Instance.new("ScreenGui", game:GetService("CoreGui"))
-	prompt:setErrorTitle("Boostware")
+	prompt:setErrorTitle("Vape")
 	local funcs
 	if funclist then
 		funcs = {}
@@ -281,12 +281,12 @@ local Combat = GuiLibrary.CreateWindow({
 	IconSize = 15
 })
 local Blatant = GuiLibrary.CreateWindow({
-	Name = "Main",
+	Name = "Blatant",
 	Icon = "vape/assets/BlatantIcon.png",
 	IconSize = 16
 })
 local Render = GuiLibrary.CreateWindow({
-	Name = "RenderV4",
+	Name = "Render",
 	Icon = "vape/assets/RenderIcon.png",
 	IconSize = 17
 })
@@ -323,13 +323,13 @@ GUI.CreateButton({
 	IconSize = 15
 })
 GUI.CreateButton({
-	Name = "Main",
+	Name = "Blatant",
 	Function = function(callback) Blatant.SetVisible(callback) end,
 	Icon = "vape/assets/BlatantIcon.png",
 	IconSize = 16
 })
 GUI.CreateButton({
-	Name = "RenderV4",
+	Name = "Render",
 	Function = function(callback) Render.SetVisible(callback) end,
 	Icon = "vape/assets/RenderIcon.png",
 	IconSize = 17
