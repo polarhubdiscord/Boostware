@@ -1,5 +1,71 @@
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local AutoToxicButton = Instance.new("TextButton")
+local UIS = game:GetService("UserInputService")
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Frame.Size = UDim2.new(0, 200, 0, 100)
+Frame.Position = UDim2.new(0.5, -100, 0.5, -50)
+Frame.Active = true
+Frame.Draggable = true
+
+AutoToxicButton.Parent = Frame
+AutoToxicButton.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+AutoToxicButton.Size = UDim2.new(0, 180, 0, 50)
+AutoToxicButton.Position = UDim2.new(0, 10, 0, 25)
+AutoToxicButton.Font = Enum.Font.SourceSans
+AutoToxicButton.Text = "AutoToxic: OFF"
+AutoToxicButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+AutoToxicButton.TextSize = 20
+
+local messages = {
+    "POV Using Cheats | Boostware",
+    "Imagine Losing L Bozo | Boostware",
+    "POV Using Boostware in 2024 Bedwars | Boostware",
+    "Imagine not using Boostware in 2024 | Boostware"
+}
+
+local autoToxicEnabled = false
+local autoToxicThread
+
+local function sendMessage(message)
+    local replicatedStorage = game:GetService("ReplicatedStorage")
+    local chatEvent = replicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
+    
+    if chatEvent then
+        local sayMessageRequest = chatEvent:FindFirstChild("SayMessageRequest")
+        if sayMessageRequest then
+            sayMessageRequest:FireServer(message, "All")
+        end
+    end
+end
+
+local function toggleAutoToxic()
+    autoToxicEnabled = not autoToxicEnabled
+    AutoToxicButton.Text = "AutoToxic: " .. (autoToxicEnabled and "ON" or "OFF")
+    
+    if autoToxicEnabled then
+        autoToxicThread = coroutine.wrap(function()
+            while autoToxicEnabled do
+                for _, message in ipairs(messages) do
+                    sendMessage(message)
+                    wait(2)
+                end
+            end
+        end)
+        autoToxicThread()
+    end
+end
+
+AutoToxicButton.MouseButton1Click:Connect(toggleAutoToxic)
+
+
 repeat task.wait() until game:IsLoaded()
 local GuiLibrary
 local baseDirectory = (shared.VapePrivate and "vapeprivate/" or "vape/")
